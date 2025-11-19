@@ -18,10 +18,10 @@ class ResponseTimer
       body << "<!-- #{@message}: #{stop - start} -->\n"
       Rails.logger.info "#{@message}: #{stop - start} seconds"
       headers["Content-Length"] = body.bytesize.to_s if headers["Content-Length"]
-      [status, headers, [body]]
+      [ status, headers, [ body ] ]
     else
       Rails.logger.info "Skipping comment injection, response type: #{content_type}"
-      [status, headers, response]
+      [ status, headers, response ]
     end
   end
 end
